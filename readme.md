@@ -4,7 +4,7 @@ How to use Map, Filter and Reduce
 
 ## Languages
 
-[Javascript/Node](https://github.com/rodrigoms2004/functionalProgramming/tree/master/javascript/readme.md)
+[Javascript/Node](https://github.com/rodrigoms2004/FunctionalProgrammingTutorial/blob/master/javascript/readme.md)
 
 
 ## Author
