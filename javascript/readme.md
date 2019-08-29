@@ -87,6 +87,7 @@ console.log(evenArray2)
 ```
 **Result:** *[ 2, 4, 6 ]*
 
+___
 
 ## Sum all 
 
@@ -118,6 +119,12 @@ const sum2 = arrayOfNumbers.reduce((accumulator, currentValue) => {
 console.log(sum2)
 ```
 **Result:** *800*
+
+___
+
+## Putting all together
+
+___
 
 
 ## Useful links
