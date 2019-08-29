@@ -60,6 +60,7 @@ console.log(powerArray3)
 ```
 **Result:** *[ 1, 4, 9, 16, 25, 36 ]*
 
+___
 
 ## Now lets get only the even numbers of an array
 
