@@ -36,30 +36,21 @@ const myNewArray = [1, 2, 3, 4, 5, 6]
 const powerArray1 = myNewArray.map((value) => {
   return value ** 2
 })
-console.log(powerArray1)
+console.log(powerArray1)  // [ 1, 4, 9, 16, 25, 36 ]
 ```
-**Result:** *[ 1, 4, 9, 16, 25, 36 ]*
-
-
 it could be written as...
 ```
 const powerArray2 = myNewArray.map(value => value ** 2)
-console.log(powerArray2)
+console.log(powerArray2)  // [ 1, 4, 9, 16, 25, 36 ]
 ```
-**Result:** *[ 1, 4, 9, 16, 25, 36 ]*
-
-
 or even as another function
 ```
 function power(number, exponent) {
   return number ** exponent
 }
-
 const powerArray3 = myNewArray.map(value => power(value, 2))
-console.log(powerArray3)
+console.log(powerArray3)  // [ 1, 4, 9, 16, 25, 36 ]
 ```
-**Result:** *[ 1, 4, 9, 16, 25, 36 ]*
-
 ___
 
 ## Now lets get only the even numbers of an array
@@ -75,18 +66,15 @@ for (let i = 0; i < myArray.length; i++) {
     evenArray1.push(myArray[i])
   }
 }
-console.log(evenArray1)
+console.log(evenArray1) // [ 2, 4, 6 ]
 ```
-**Result:** *[ 2, 4, 6 ]*
 
 ### Using FILTER
 
 ```
 const evenArray2 = myArray.filter(value => value % 2 === 0)
-console.log(evenArray2)
+console.log(evenArray2) // [ 2, 4, 6 ]
 ```
-**Result:** *[ 2, 4, 6 ]*
-
 ___
 
 ## Sum all 
@@ -105,10 +93,8 @@ let sum1 = 0
 for (let i = 0; i < arrayOfNumbers.length; i++) {
   sum1 = sum1 + arrayOfNumbers[i]
 }
-console.log(sum1)
+console.log(sum1) // 800
 ```
-**Result:** *800*
-
 
 ### Using REDUCE 
 
@@ -116,15 +102,77 @@ console.log(sum1)
 const sum2 = arrayOfNumbers.reduce((accumulator, currentValue) => {
   return accumulator + currentValue
 }, 0)
-console.log(sum2)
+console.log(sum2) // 800
 ```
-**Result:** *800*
-
 ___
 
 ## Putting all together
 
-___
+Given an array of objects
+
+```
+const people = [
+  { id: 1, name: "Robison", age: 38, married: true, race: 'caucasian' },
+  { id: 2, name: "Toshiba", age: 23, married: false, race: 'asian' },
+  { id: 3, name: "Cintia", age: 53, married: true, race: 'black' },
+  { id: 4, name: "Monica", age: 34, married: false, race: 'latin' },
+  { id: 5, name: "Joana", age: 19, married: false, race: 'caucasian' }
+]
+```
+
+### An array of ages
+
+from this array create an array only with ages
+
+```
+const ageArray = people.map((person) => {
+  return person.age
+})
+console.log(ageArray) // [ 38, 23, 53, 34, 19 ]
+```
+
+Remove *race* field and create a new field called *mainLanguage* with value *English*
+```
+const morePeople = people.map((person)=> {
+  const { race, ...otherFields } = person
+  const result = {
+    ...otherFields,
+    mainLanguage: "English"
+  }
+  return result
+})
+```
+
+resulting in:
+
+```
+[ 
+  { id: 1, name: 'Robison', age: 38, married: true, mainLanguage: 'English' },
+  { id: 2, name: 'Toshiba', age: 23, married: false, mainLanguage: 'English' },
+  { id: 3, name: 'Cintia', age: 53, married: true, mainLanguage: 'English' },
+  { id: 4, name: 'Monica', age: 34, married: false, mainLanguage: 'English' },
+  { id: 5, name: 'Joana', age: 19, married: false, mainLanguage: 'English' } 
+]
+```
+
+### Filtering only married people
+
+If *maried* value is *true*
+
+```
+const marriedPeople = morePeople.filter(value => value.married === true)
+console.log(marriedPeople)
+```
+
+resulting in array of objects:
+```
+[ 
+  { id: 1, name: 'Robison', age: 38, married: true, mainLanguage: 'English' },
+  { id: 3, name: 'Cintia', age: 53, married: true, mainLanguage: 'English' }
+]
+```
+
+
 
 
 ## Useful links

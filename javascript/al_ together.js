@@ -27,11 +27,11 @@ const morePeople = people.map((person)=> {
 
   return result
 })
-
+// console.log(morePeople)
 
 // filtering only married people
 const marriedPeople = morePeople.filter(value => value.married === true)
-// console.log(marriedPeople)
+console.log(marriedPeople)
 
 
 // Add field salary 
