@@ -4,13 +4,13 @@ Simple examples how to use functional programming
 
 ## Requirements
 
-### NodeJS
+#### NodeJS
 
 [NodeJS](https://nodejs.org)
 
 ## Modify, add or remove elements of an array...
 
-### Ordinary way...
+#### Ordinary way...
 
 Using looping FOR
 
@@ -25,7 +25,7 @@ console.log(myArray)
 **Result:** *[ 1, 4, 9, 16, 25, 36 ]*
 
 
-### Using MAP
+#### Using MAP
 
 The method MAP returns an array
 
@@ -55,7 +55,7 @@ ___
 
 ## Now lets get only the even numbers of an array
 
-### The painful way...
+#### The painful way...
 
 ```
 const myArray = [1, 2, 3, 4, 5, 6]
@@ -69,7 +69,7 @@ for (let i = 0; i < myArray.length; i++) {
 console.log(evenArray1) // [ 2, 4, 6 ]
 ```
 
-### Using FILTER
+#### Using FILTER
 
 ```
 const evenArray2 = myArray.filter(value => value % 2 === 0)
@@ -86,7 +86,7 @@ Given this array
 const arrayOfNumbers = [20, 30, 200, 50, 500]
 ```
 
-### Using FOR
+#### Using FOR
 
 ```
 let sum1 = 0
@@ -96,7 +96,7 @@ for (let i = 0; i < arrayOfNumbers.length; i++) {
 console.log(sum1) // 800
 ```
 
-### Using REDUCE 
+#### Using REDUCE 
 
 ```
 const sum2 = arrayOfNumbers.reduce((accumulator, currentValue) => {
@@ -120,7 +120,7 @@ const people = [
 ]
 ```
 
-### An array of ages
+#### An array of ages
 
 from this array create an array only with ages
 
@@ -155,7 +155,7 @@ resulting in:
 ]
 ```
 
-### Filtering only married people
+#### Filtering only married people
 
 If *maried* value is *true*
 
