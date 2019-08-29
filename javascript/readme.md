@@ -131,6 +131,8 @@ const ageArray = people.map((person) => {
 console.log(ageArray) // [ 38, 23, 53, 34, 19 ]
 ```
 
+#### Removing a field, add other with a value
+
 Remove *race* field and create a new field called *mainLanguage* with value *English*
 ```
 const morePeople = people.map((person)=> {
@@ -172,7 +174,101 @@ resulting in array of objects:
 ]
 ```
 
+#### Add another field
 
+Add the field wage with 1000 monetary units
+
+```
+const morePeople2 = morePeople.map(person => {
+  const { ...fieldList } = person
+
+  const result = {
+    ...fieldList,
+    wage: 1000
+  }
+  return result
+})
+```
+
+Resulting:
+```
+[ 
+  { id: 1, name: 'Robison', age: 38, married: true, mainLanguage: 'English', wage: 1000 },
+  { id: 2, name: 'Toshiba', age: 23, married: false, mainLanguage: 'English', wage: 1000 },
+  { id: 3, name: 'Cintia', age: 53, married: true, mainLanguage: 'English', wage: 1000 },
+  { id: 4, name: 'Monica', age: 34, married: false, mainLanguage: 'English', wage: 1000 },
+  { id: 5, name: 'Joana', age: 19, married: false, mainLanguage: 'English', wage: 1000 } 
+]
+```
+
+Add more 500 monetary units to maried people
+```
+const marriedPeopleWage = morePeople2.map(person => {
+  const { ...fieldList } = person
+
+  fieldList.wage += 500
+  return {
+    ...fieldList,
+  }
+}).filter(person => person.married === true)
+console.log(marriedPeopleWage)
+```
+
+Each maried person have 1500 monetary units of wage now
+```
+[ 
+  { id: 1, name: 'Robison', age: 38, married: true, mainLanguage: 'English', wage: 1500 },
+  { id: 3, name: 'Cintia', age: 53, married: true, mainLanguage: 'English', wage: 1500 }
+]
+```
+
+#### Join arrays
+
+Update values from *morePeople2* using the new values from *marriedPeopleWage*, store it in *morePeople3*
+
+```
+const morePeople3 = morePeople2.map(person => {
+  return Object.assign(person, marriedPeopleWage.find(p => p.id == person.id))
+})
+console.log(morePeople3)
+```
+
+Resulting:
+```
+[ 
+  { id: 1, name: 'Robison', age: 38, married: true, mainLanguage: 'English', wage: 1500 },
+  { id: 2, name: 'Toshiba', age: 23, married: false, mainLanguage: 'English', wage: 1000 },
+  { id: 3, name: 'Cintia', age: 53, married: true, mainLanguage: 'English', wage: 1500 },
+  { id: 4, name: 'Monica', age: 34, married: false, mainLanguage: 'English', wage: 1000 },
+  { id: 5, name: 'Joana', age: 19, married: false, mainLanguage: 'English', wage: 1000 } 
+]
+```
+
+#### Sum wages
+
+Sum the wage of all people
+
+```
+const sumWage = morePeople3.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.wage
+}, 0)
+console.log(sumWage)  // 6000
+```
+
+Increase in 200 monetary units the wage of people under 25 years old and single, summing all wages
+
+```
+const sumWageYoungSingle = morePeople3
+.map(person => {
+  const { ...fieldList } = person
+  fieldList.wage += 200
+  return { ...fieldList }
+})
+.filter(person => person.age < 25 && person.married === false)
+.reduce((accumulator, currentValue) => accumulator + currentValue.wage, 0)
+
+console.log(sumWageYoungSingle) // 2400
+```
 
 
 ## Useful links

@@ -31,56 +31,58 @@ const morePeople = people.map((person)=> {
 
 // filtering only married people
 const marriedPeople = morePeople.filter(value => value.married === true)
-console.log(marriedPeople)
+// console.log(marriedPeople)
 
 
-// Add field salary 
+// Add field wage 
 const morePeople2 = morePeople.map(person => {
   const { ...fieldList } = person
 
   const result = {
     ...fieldList,
-    salary: 1000
+    wage: 1000
   }
   return result
 })
+// console.log(morePeople2)
 
-// Add more US$ 500 of salary to the maried ones
-const marriedPeopleSalary = morePeople2.map(person => {
+
+// Add more US$ 500 of wage to the maried ones
+const marriedPeopleWage = morePeople2.map(person => {
   const { ...fieldList } = person
 
-  fieldList.salary += 500
+  fieldList.wage += 500
   return {
     ...fieldList,
   }
 }).filter(person => person.married === true)
-// console.log(marriedPeopleSalary)
+// console.log(marriedPeopleWage)
 
 const morePeople3 = morePeople2.map(person => {
-  return Object.assign(person, marriedPeopleSalary.find(p => p.id == person.id))
+  return Object.assign(person, marriedPeopleWage.find(p => p.id == person.id))
 })
 // console.log(morePeople3)
 
-// Sum of salaries
+// Sum of wages
 
-const sumSalary = morePeople3.reduce((accumulator, currentValue) => {
-  return accumulator + currentValue.salary
+const sumWage = morePeople3.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.wage
 }, 0)
-// console.log(sumSalary)  // US$ 6000
+console.log(sumWage)  // US$ 6000
 
 
-// Add R$ 200 to the salary of people under 25 years old and single
+// Add R$ 200 to the wage of people under 25 years old and single
 // sum all 
-const sumSalaryYoungSingle = morePeople3
+const sumWageYoungSingle = morePeople3
 .map(person => {
   const { ...fieldList } = person
-  fieldList.salary += 200
+  fieldList.wage += 200
   return { ...fieldList }
 })
 .filter(person => person.age < 25 && person.married === false)
-.reduce((accumulator, currentValue) => accumulator + currentValue.salary, 0)
+.reduce((accumulator, currentValue) => accumulator + currentValue.wage, 0)
 
-console.log(sumSalaryYoungSingle) // 2400
+console.log(sumWageYoungSingle) // 2400
 
 
 
