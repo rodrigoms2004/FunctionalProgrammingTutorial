@@ -469,7 +469,7 @@ echo $total_wage;
 6000
 ```
 
-*(or as explained before, we are implementing ourselves for demonstration purposes, but we could use [`array_column`](https://www.php.net/manual/en/function.array-column.php) and [`array_sum`](https://www.php.net/manual/en/function.array-sum.php): `$total_wage2 = array_sum(array_column($more_people3, 'wage'))`)*
+*(or as explained before, we are implementing ourselves for demonstration purposes, but we could use [`array_column`](https://www.php.net/manual/en/function.array-column.php) and [`array_sum`](https://www.php.net/manual/en/function.array-sum.php) like in the example bellow)*
 
 Increase in `200` monetary units the wage of people under 25 years old and single, summing all wages:
 
