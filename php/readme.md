@@ -20,7 +20,7 @@ foreach ($arr as $key => $value) {
 print_r($arr);
 ```
 
-Result:
+**Result:**
 
 ```text
 Array
@@ -46,24 +46,62 @@ $arr = array_map(function ($value) {
 print_r($arr);
 ```
 
-using Arrow Function:
+using **Arrow Function:**
 
 ```php
 $arr = [1, 2, 3, 4, 5, 6];
 
-$arr = array_map(fn ($value) => $value * $value, $arr);
+$arr = array_map(fn($value) => $value * $value, $arr);
 
 print_r($arr);
 ```
 
-as another function (first-class + & high-order principles):
+as another function **(first-class & high-order principles):**
 
 ```php
-$square = fn ($value) => $value * $value;
+$square = fn($value) => $value * $value;
 
 $arr = [1, 2, 3, 4, 5, 6];
 
 $arr = array_map($square, $arr);
 
 print_r($arr);
+```
+
+## Filter
+
+Let's filter the even numbers of an array.
+
+Imperative `foreach`:
+
+```php
+$arr = [1, 2, 3, 4, 5, 6];
+$even = [];
+
+foreach ($arr as $value) {
+    if ($value % 2 === 0) {
+        $even[] = $value;
+    }
+}
+
+print_r($even);
+```
+
+**Result:**
+
+```text
+Array
+(
+    [0] => 2
+    [1] => 4
+    [2] => 6
+)
+```
+
+Declarative `array_filter`:
+
+```php
+$arr = [1, 2, 3, 4, 5, 6];
+$even = array_filter($arr, fn($value) => $value % 2 === 0);
+print_r($even);
 ```
