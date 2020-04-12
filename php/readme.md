@@ -105,3 +105,36 @@ $arr = [1, 2, 3, 4, 5, 6];
 $even = array_filter($arr, fn($value) => $value % 2 === 0);
 print_r($even);
 ```
+
+## Reduce
+
+Let's sum all numbers of an array.
+
+Imperative `foreach`:
+
+```php
+$arr = [1, 2, 3, 4, 5, 6];
+$result = 0;
+
+foreach ($arr as $value) {
+    $result += $value;
+}
+
+echo $result;
+```
+
+**Result:**
+
+```text
+21
+```
+
+Declarative `array_reduce`:
+
+```php
+$arr = [1, 2, 3, 4, 5, 6];
+$result = array_reduce($arr, fn($result, $value) => $result + $value);
+echo $result;
+```
+
+*(actually there is already a handy function for that called `array_sum`, but for demonstrations purposes we implemented one by ourselves)*
