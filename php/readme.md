@@ -153,7 +153,7 @@ $people = [
 ];
 ```
 
-##### An array of ages
+#### An array of ages
 
 ```php
 $ages = array_map(fn($person) => $person['age'], $people);
@@ -176,7 +176,7 @@ Array
 
 *(there is already [`array_column`](https://www.php.net/manual/en/function.array-column.php) for that, but for demonstration purposes we implemented one by ourselves)*
 
-##### Replacing a key-value by another pair:
+#### Replacing a key-value by another pair:
 
 ```php
 $more_people = array_map(function ($person) {
@@ -240,7 +240,7 @@ Array
 )
 ```
 
-##### Filtering only married people
+#### Filtering only married people
 
 Where `'married' => true`:
 
@@ -276,7 +276,7 @@ Array
 )
 ```
 
-##### Add another key
+#### Add another key
 
 Add the key `wage` with `1000` monetary units:
 
@@ -383,7 +383,7 @@ Array
 )
 ```
 
-##### Join arrays
+#### Join arrays
 
 Update values from `$more_people2` using the new values from `$married_people_wage`, store it in `$more_people3`:
 
@@ -453,7 +453,7 @@ Array
 )
 ```
 
-##### Sum wages
+#### Sum wages
 
 Sum the wage of all people:
 
